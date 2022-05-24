@@ -36,7 +36,7 @@ const LocationData = () => {
   <>
     <div className="Child-wrapper">
       <h2>RESTAURANTS</h2>
-      {{locData}.map((n) => {
+      {locData.map((n) => {
         return (
           <>
             <div className="Child-box" key={n.id}>

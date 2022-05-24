@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import OwnersScreen from './screens/OwnersScreen'
+import OwnersScreen from '../src/screens/OwnersScreen'
 
 
 ReactDOM.render(
