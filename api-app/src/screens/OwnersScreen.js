@@ -9,10 +9,11 @@ const LocationData = () => {
   const getLocationName = async () => {
     const res = await API.get(
       "/public/location"
-    );
+    )
+
     if (res.status === 200) {
       console.log(res);
-      setLocData( res.data.result);
+      setLocData( res.data);
       };
     }
 
