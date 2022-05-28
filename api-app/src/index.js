@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from '../src/App';
 import './index.css';
-import OwnersScreen from '../src/screens/OwnersScreen'
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <OwnersScreen />
+
+    <App />
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
