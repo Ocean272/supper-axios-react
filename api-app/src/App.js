@@ -13,6 +13,7 @@ import API from "./screens/API";
 import Cuisine from "./components/CuisineList";
 import Price from "./components/PriceList";
 import Home from "./components/Home";
+import AddNewLocation from "./components/createNewLoc";
 
 /*
   App.js responsibilities:
@@ -91,6 +92,11 @@ function App() {
               signup
             </NavLink>
           </div>
+          <div>
+            <NavLink to="/AddNewLocation" activeClassName="current">
+              AddNewLocation
+            </NavLink>
+          </div>
         </div>
         <div className="tab-container">
           {/* A <Switch> looks through its children <Route>s and
@@ -107,6 +113,9 @@ function App() {
             </Route>
             <Route path="/Signup">
               <FormInput />
+            </Route>
+            <Route path="/AddNewLocation">
+              <AddNewLocation />
             </Route>
             <Route path="/home">
               <Home />
