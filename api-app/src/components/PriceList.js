@@ -9,10 +9,10 @@ const Price = ({data}) => {
   return (
   <>
     <div className="Child-wrapper">
+    <h2>Price</h2>
       {data.map((p) => {
         return (        
             <div className="Child-box" key={p.id}>
-              <h2>Price</h2>
               <p>Price range : {p.cost}</p>
             </div>
             );
