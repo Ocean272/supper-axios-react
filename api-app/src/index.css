@@ -22,9 +22,6 @@ code {
 }
 
 .Child-wrapper {
-  display: flex;
-  flex-flow: column;
-  flex-direction: row;
   justify-items: center;
   align-items: center;
   flex-wrap: wrap;
@@ -33,9 +30,9 @@ code {
 
 .Child-box {
   display: block;
-  width: 250px;
+  width: 500px;
   margin-left: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   flex-flow: row;
   flex-direction: column;
   justify-items: left;
