@@ -1,5 +1,4 @@
 import React from "react";
-//import API from "../screens/API";
 
 const Restaurant = ({data}) => {
 

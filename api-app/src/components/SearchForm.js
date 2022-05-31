@@ -1,59 +1,34 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react'
+import axios from "axios";
+import React, { useState } from "react";
 
-const SearchForm = () => {
-    const [search, setSearch] = useState('');
-    const [record, setRecord] = useState([]);
+const SearchForm = ({data}) => {
+  const [search, setSearch] = useState("");
+  const [record, setRecord] = useState([]);
 
-    const loadLocationDetail = async () => {
-        const res = fetch('https://supper-makan-apa.herokuapp.com/public/location')
-            .then(res =>{
-                return res.json();
-            })
-            .then((myJson) => {
-                setRecord(myJson);
-            });
-    }
-    useEffect(() => {
-        loadLocationDetail();
-    }, []);
-
-    const searchRecords = () => {
-        axios.get(`https://supper-makan-apa.herokuapp.com/public/location/${search}`)
-           .then(res => {
-                setRecord(res.data);
-        });
-    }
-
-
-    const loadLocationAgain = async () => {
-        const res = fetch('https://supper-makan-apa.herokuapp.com/public/location')
-            .then(res =>{
-                return res.json();
-            })
-            .then((myJson) => {
-                setRecord(myJson);
-            });
-    }
-    useEffect(() => {
-        loadLocationAgain();
-    }, []);
+  const searchRecords = (data) => {
+    axios
+      .get(`https://supper-makan-apa.herokuapp.com/public/location/${search}`)
+      .then((res) => {
+        setRecord(res.data);
+      });
+  };
 
   return (
-    <section>  
-    <div class="container">  
-    <h4 className="mb-3 text-center mt-4">Search Restaruant location</h4>
-      <div class="row mt-3">
-      <div class="col-sm-11">
-        <div class="input-group mb-4 mt-3">
-          <div class="form-outline">
-           <input type="text" id="form1"    onKeyDown={loadLocationAgain} onKeyUp={searchRecords} onChange={(e)=>setSearch(e.target.value)} class="form-control" placeholder="East, West, North, South, Central" style={{backgroundColor:"#ececec"}}/>
-        </div>
-        {/* <button type="button" onClick={searchRecords}  class="btn btn-success">
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </button> */}
-        </div>  
-        <table class="table table-hover  table-striped table-bordered ml-4 ">
+    <section>
+      <div className="container">
+        <h4 className="mb-3 text-center mt-4">Search Restaruant location</h4>
+        <div className="row mt-3">
+            <input
+                type="text"
+                id="form1"
+            //   onKeyDown={data}
+                onKeyUp={searchRecords}
+                onChange={(e) => setSearch(e.target.value)}
+                class="form-control"
+                placeholder="East, West, North, South, Central"
+                style={{ backgroundColor: "#ececec" }}
+            />
+        <table className="table table-hover  table-striped table-bordered ml-4 ">
             <thead>
             <tr>
                 <th>Name</th>
@@ -64,26 +39,21 @@ const SearchForm = () => {
             </tr>
             </thead>
             <tbody>
-     
-            {record.map((location)=>
-                <tr>
+            {record.map((location) => (
+                <tr key={location.id} >
                 <td>{location.name}</td>
                 <td>{location.address}</td>
                 <td>{location.located_at}</td>
                 <td>{location.cuisineId}</td>
                 <td>{location.priceId}</td>
-                <td><img class="img-fluid" src={"/images/" + location.emp_image} style={{maxWidth:"40px"}}  alt=""/></td>
                 </tr>
-                )} 
+            ))}
             </tbody>
-        </table>
+        </table>     
+        </div>
       </div>
-      </div>
-    </div>
-   </section>
-  )
-}
+    </section>
+  );
+};
 
-
-
-export default SearchForm
+export default SearchForm;
