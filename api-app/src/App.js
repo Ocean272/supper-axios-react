@@ -13,7 +13,9 @@ import API from "./screens/API";
 import Cuisine from "./components/CuisineList";
 import Price from "./components/PriceList";
 import Home from "./components/Home";
-import AddNewLocation from "./components/createNewLoc";
+import NewLocation from "./components/createNewLoc";
+import ReviewForm from "./components/ReviewForm";
+import SearchForm from "./components/SearchForm";
 
 /*
   App.js responsibilities:
@@ -93,8 +95,18 @@ function App() {
             </NavLink>
           </div>
           <div>
-            <NavLink to="/AddNewLocation" activeClassName="current">
-              AddNewLocation
+            <NavLink to="/NewLocation" activeClassName="current">
+              NewLocation
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to="/ReviewForm" activeClassName="current">
+              ReviewForm
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to="/SearchForm" activeClassName="current">
+              SearchForm
             </NavLink>
           </div>
         </div>
@@ -114,8 +126,14 @@ function App() {
             <Route path="/Signup">
               <FormInput />
             </Route>
-            <Route path="/AddNewLocation">
-              <AddNewLocation />
+            <Route path="/NewLocation">
+              <NewLocation />
+            </Route>
+            <Route path="/ReviewForm">
+              <ReviewForm />
+            </Route>
+            <Route path="/SearchForm">
+              <SearchForm/>
             </Route>
             <Route path="/home">
               <Home />

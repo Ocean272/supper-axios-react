@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
  
-const AddLocation = () => {
+const newLocation = () => {
     const [locationId, setLocationId] = useState("");
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -101,4 +101,4 @@ const AddLocation = () => {
     )
 }
  
-export default AddLocation
+export default newLocation
