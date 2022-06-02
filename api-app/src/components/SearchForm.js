@@ -1,33 +1,81 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-const SearchForm = ({data}) => {
+const SearchForm = () => {
   const [search, setSearch] = useState("");
+  const [search1, setSearch1] = useState("");
+  const [search2, setSearch2] = useState("");
   const [record, setRecord] = useState([]);
+  
 
-  const searchRecords = (data) => {
+  const searchRecords = () => {
     axios
-      .get(`https://supper-makan-apa.herokuapp.com/public/location/${search}`)
+      .get(`http://localhost:3000/public/location/${search}/${search1}/${search2}`)
       .then((res) => {
         setRecord(res.data);
       });
-  };
+  }
+
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    setSearch(e.target.value);
+  }
+  const handleChange1 = (e) => {
+    console.log(e.target.value);
+    setSearch1(e.target.value);
+  }
+  const handleChange2 = (e) => {
+    console.log(e.target.value);
+    setSearch2(e.target.value);
+  }
 
   return (
     <section>
       <div className="container">
         <h4 className="mb-3 text-center mt-4">Search Restaruant location</h4>
         <div className="row mt-3">
-            <input
-                type="text"
-                id="form1"
-            //   onKeyDown={data}
-                onKeyUp={searchRecords}
-                onChange={(e) => setSearch(e.target.value)}
-                class="form-control"
-                placeholder="East, West, North, South, Central"
-                style={{ backgroundColor: "#ececec" }}
-            />
+          <form>
+            <h3>Location</h3>
+            <select
+                onClick={searchRecords}
+                onChange={handleChange}> 
+              <option value="N/A">Please choose</option>
+              <option value="North">North</option>
+              <option value="South">South</option>
+              <option value="East">East</option>
+              <option value="West">West</option>
+              <option value="Central">Central</option>
+            </select>
+          </form>
+
+          <form>
+            <h3>Cuisine offered</h3>
+            <select
+                onClick={searchRecords}
+                onChange={handleChange1}> 
+              <option value="N/A">Please choose</option>
+              <option value="Western">Western</option>
+              <option value="Muslim">Muslim</option>
+              <option value="Indian">Indian</option>
+              <option value="Chinese">Chinese</option>
+              <option value="Japanese">Japanese</option>
+              <option value="Korean">Korean</option>
+            </select>
+          </form>
+
+          <form>
+            <h3>Price range</h3>
+            <select
+                onClick={searchRecords}
+                onChange={handleChange2}> 
+              <option value="N/A">Please choose</option>
+              <option value="$">$</option>
+              <option value="$$">$$</option>
+              <option value="$$$">$$$</option>
+              <option value="$$$$">$$$$</option>
+              <option value="$$$$$">$$$$$</option>
+            </select>
+          </form>
         <table className="table table-hover  table-striped table-bordered ml-4 ">
             <thead>
             <tr>
