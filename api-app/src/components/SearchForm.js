@@ -12,9 +12,8 @@ const SearchForm = () => {
     axios
       .get(`http://localhost:3000/public/location/${search}/${search1}/${search2}`)
       .then((res) => {
-        setRecordloc(res.data);
-        // setRecordcui(res.data);
-        // setRecordprice(res.data);
+        setRecord(res.data);
+
       });
   }
 
@@ -89,7 +88,7 @@ const SearchForm = () => {
             </tr>
             </thead>
             <tbody>
-            {recordloc.map((location) => (
+            {record.map((location) => (
                 <tr key={location.id} >
                 <td>{location.name}</td>
                 <td>{location.address}</td>
