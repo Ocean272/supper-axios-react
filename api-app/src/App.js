@@ -38,7 +38,6 @@ function App() {
       };
     }
 
-
   return (
     <div className="App-header">
       <Router>
@@ -51,7 +50,7 @@ function App() {
           </div>
           <div>
             <NavLink to="/Restaurant" activeClassName="current">
-              Restaurant
+              Restaruant
             </NavLink>
           </div>
           <div>

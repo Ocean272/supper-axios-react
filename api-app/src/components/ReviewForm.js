@@ -16,6 +16,7 @@ const ReviewForm = () => {
           Your Review:
           <textarea 
           type="text"
+          value={review}
           name="Your comments here"
           onChange={e => setReview(e.target.value)} />
         </label>
