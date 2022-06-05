@@ -1,15 +1,21 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-const SearchForm = ({data}) => {
+const SearchForm = () => {
   const [search, setSearch] = useState("");
-  const [record, setRecord] = useState([]);
+  const [search1, setSearch1] = useState("");
+  const [search2, setSearch2] = useState("");
+  const [recordloc, setRecordloc] = useState([]);
+  //const [recordcui, setRecordcui] = useState([]);
+  //const [recordprice, setRecordprice] = useState([]);
 
-  const searchRecords = (data) => {
+  const searchRecords = () => {
     axios
-      .get(`https://supper-makan-apa.herokuapp.com/public/location/${search}`)
+      .get(`http://localhost:3000/public/location/${search}/${search1}/${search2}`)
       .then((res) => {
-        setRecord(res.data);
+        setRecordloc(res.data);
+        // setRecordcui(res.data);
+        // setRecordprice(res.data);
       });
   };
 
@@ -28,6 +34,26 @@ const SearchForm = ({data}) => {
                 placeholder="East, West, North, South, Central"
                 style={{ backgroundColor: "#ececec" }}
             />
+              <input
+                type="text"
+                id="form1"
+            //   onKeyDown={data}
+                onKeyUp={searchRecords}
+                onChange={(e) => setSearch1(e.target.value)}
+                class="form-control"
+                placeholder="Western, Muslim, Indian, Chinese, "
+                style={{ backgroundColor: "#ececec" }}
+            />
+              <input
+                type="text"
+                id="form1"
+            //   onKeyDown={data}
+                onKeyUp={searchRecords}
+                onChange={(e) => setSearch2(e.target.value)}
+                class="form-control"
+                placeholder="$, $$, $$$, $$$$, $$$$$, $$$$$$"
+                style={{ backgroundColor: "#ececec" }}
+            />
         <table className="table table-hover  table-striped table-bordered ml-4 ">
             <thead>
             <tr>
@@ -39,7 +65,7 @@ const SearchForm = ({data}) => {
             </tr>
             </thead>
             <tbody>
-            {record.map((location) => (
+            {recordloc.map((location) => (
                 <tr key={location.id} >
                 <td>{location.name}</td>
                 <td>{location.address}</td>
@@ -49,6 +75,28 @@ const SearchForm = ({data}) => {
                 </tr>
             ))}
             </tbody>
+            {/* <tbody>
+            {recordcui.map((location) => (
+                <tr key={location.id} >
+                <td>{location.name}</td>
+                <td>{location.address}</td>
+                <td>{location.located_at}</td>
+                <td>{location.cuisineId}</td>
+                <td>{location.priceId}</td>
+                </tr>
+            ))}
+            </tbody>
+            <tbody>
+            {recordprice.map((location) => (
+                <tr key={location.id} >
+                <td>{location.name}</td>
+                <td>{location.address}</td>
+                <td>{location.located_at}</td>
+                <td>{location.cuisineId}</td>
+                <td>{location.priceId}</td>
+                </tr>
+            ))}
+            </tbody> */}
         </table>     
         </div>
       </div>

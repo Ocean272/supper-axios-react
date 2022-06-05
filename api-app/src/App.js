@@ -10,8 +10,6 @@ import FormInput from './components/signupform';
 //import Form from './components/signupform';
 import "../src/index.css";
 import API from "./screens/API";
-import Cuisine from "./components/CuisineList";
-import Price from "./components/PriceList";
 import Home from "./components/Home";
 import NewLocation from "./components/createNewLoc";
 import ReviewForm from "./components/ReviewForm";
@@ -25,13 +23,9 @@ import SearchForm from "./components/SearchForm";
 function App() {
 
   const [locData, setLocData] = useState([]);
-  const [cuisine, setCuisine] = useState([]);
-  const [price, setPrice] = useState([]);
 
   useEffect(() => {
     getLocationAll();
-    getCuisine();
-    getPrice();
   }, []);
 
   const getLocationAll = async () => {
@@ -43,26 +37,7 @@ function App() {
       setLocData(res.data);
       };
     }
-  
-    const getCuisine = async () => {
-      const res = await API.get(
-        "/user/cuisine"
-      );
-      if (res.status === 200) {
-        console.log(res);
-        setCuisine(res.data);
-      }
-    }
 
-    const getPrice = async () => {
-      const res = await API.get(
-        "/user/price"
-      );
-      if (res.status === 200) {
-        console.log(res);
-        setPrice(res.data);
-      }
-    }
 
   return (
     <div className="App-header">
@@ -76,17 +51,7 @@ function App() {
           </div>
           <div>
             <NavLink to="/Restaurant" activeClassName="current">
-              Restaruant
-            </NavLink>
-          </div>
-          <div>
-            <NavLink to="/Cuisine" activeClassName="current">
-              Cuisine
-            </NavLink>
-          </div>
-          <div>
-            <NavLink to="/Price" activeClassName="current">
-              Price
+              Restaurant
             </NavLink>
           </div>
           <div>
@@ -116,12 +81,6 @@ function App() {
           <Switch>
             <Route path="/Restaurant">
               <Restaurant data={locData} />
-            </Route>
-            <Route path="/Cuisine">
-              <Cuisine data={cuisine} />
-            </Route>
-            <Route path="/Price">
-              <Price data={price} />
             </Route>
             <Route path="/Signup">
               <FormInput />
