@@ -35,8 +35,8 @@ function App() {
     if (res.status === 200) {
       console.log(res);
       setLocData(res.data);
-      };
-    }
+    };
+  };
 
   return (
     <div className="App-header">

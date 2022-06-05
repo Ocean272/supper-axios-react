@@ -10,7 +10,7 @@ const SearchForm = () => {
 
   const searchRecords = () => {
     axios
-      .get(`http://localhost:3000/public/location/${search}/${search1}/${search2}`)
+      .get(`https://supper-makan-apa.herokuapp.com/public/location/${search}/${search1}/${search2}`)
       .then((res) => {
         setRecord(res.data);
 
