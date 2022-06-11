@@ -10,9 +10,10 @@ const SearchForm = () => {
 
   const searchRecords = () => {
     axios
-      .get(`http://localhost:3000/public/location/${search}/${search1}/${search2}`)
+      .get(`https://supper-makan-apa.herokuapp.com/public/location/${search}/${search1}/${search2}`)
       .then((res) => {
         setRecord(res.data);
+
       });
   }
 
@@ -98,6 +99,28 @@ const SearchForm = () => {
                 </tr>
             ))}
             </tbody>
+            {/* <tbody>
+            {recordcui.map((location) => (
+                <tr key={location.id} >
+                <td>{location.name}</td>
+                <td>{location.address}</td>
+                <td>{location.located_at}</td>
+                <td>{location.cuisineId}</td>
+                <td>{location.priceId}</td>
+                </tr>
+            ))}
+            </tbody>
+            <tbody>
+            {recordprice.map((location) => (
+                <tr key={location.id} >
+                <td>{location.name}</td>
+                <td>{location.address}</td>
+                <td>{location.located_at}</td>
+                <td>{location.cuisineId}</td>
+                <td>{location.priceId}</td>
+                </tr>
+            ))}
+            </tbody> */}
         </table>     
         </div>
       </div>
