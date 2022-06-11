@@ -3,8 +3,25 @@ import { useHistory } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
-async function loginUser(credentials) {
-    return fetch("https://supper-makan-apa.herokuapp.com/login/signup", {
+// async function loginUser(credentials) {
+//     return fetch("https://supper-makan-apa.herokuapp.com/login/signin", {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(credentials)
+//     })
+//       .then(data => data.json())
+//   }
+  
+const LoginForm = (setToken) => {
+  const history = useHistory();
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+async function loginIn(credentials) {
+    return fetch("https://supper-makan-apa.herokuapp.com/login/signin", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -13,23 +30,18 @@ async function loginUser(credentials) {
     })
       .then(data => data.json())
   }
-  
-const FormInput = (setToken) => {
-  const history = useHistory();
-  const [username, setUsername] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-
 
   const handleSubmit =  (e) => {
     e.preventDefault();
-    const token = loginUser({
+    const credentials = loginIn({
       username,
       email,
       password
     });
+
+    console.log(credentials);
     history.push('/home');
-    setToken(token);
+    // setToken(token);
   }
   return (
     <h4 className="loginBox">
@@ -53,14 +65,14 @@ const FormInput = (setToken) => {
           placeholder="enter a password"
           onChange={e => setPassword(e.target.value)}
         />
-        <button type="submit" onClick={handleSubmit} >register</button>
+        <button type="submit" onClick={handleSubmit} >Submit</button>
       </form>
     </h4>
   );
 };
-  FormInput.propTypes = {
+  LoginForm.propTypes = {
     setToken: PropTypes.func.isRequired
 }
   
-export default FormInput;
+export default LoginForm;
   

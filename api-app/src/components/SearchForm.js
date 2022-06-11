@@ -58,6 +58,7 @@ const SearchForm = () => {
               <option value="Muslim">Muslim</option>
               <option value="Indian">Indian</option>
               <option value="Chinese">Chinese</option>
+              <option value="Thai">Thai</option>
               <option value="Japanese">Japanese</option>
               <option value="Korean">Korean</option>
             </select>
