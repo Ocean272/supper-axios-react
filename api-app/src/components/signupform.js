@@ -28,13 +28,13 @@ const FormInput = (setToken) => {
       email,
       password
     });
-    history.push('/home');
+    history.push('/signin');
     setToken(token);
   }
   return (
     <h4 className="loginBox">
       <form onSubmit={handleSubmit}>
-        <p>Login</p>
+        <p>Register</p>
         <input
           type="text"
           name="username"
