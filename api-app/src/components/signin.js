@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import PropTypes from 'prop-types';
-import axios from "axios";
 import API from "../screens/API";
 
 
@@ -16,7 +14,7 @@ import API from "../screens/API";
 //       .then(data => data.json())
 //   }
   
-const LoginForm = (setToken) => {
+const LoginForm = () => {
   const history = useHistory();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -37,8 +35,10 @@ const LoginForm = (setToken) => {
   };
     // if there's a user show the message below
     if (user) {
+      history.push('/home')
       return <div>{user.username}, you are logged in!</div>
     }
+    
 
   //if there's no user, show the login form
   return (
@@ -62,9 +62,6 @@ const LoginForm = (setToken) => {
     </h4>
   );
 };
-  LoginForm.propTypes = {
-    setToken: PropTypes.func.isRequired
-}
   
 export default LoginForm;
   
