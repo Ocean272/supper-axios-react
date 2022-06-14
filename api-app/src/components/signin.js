@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 import API from "../screens/API";
 
 
@@ -15,7 +15,7 @@ import API from "../screens/API";
 //   }
   
 const LoginForm = () => {
-  const history = useHistory();
+  //const history = useHistory();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [user, setUser] = useState();
@@ -35,7 +35,7 @@ const LoginForm = () => {
   };
     // if there's a user show the message below
     if (user) {
-      history.push('/home')
+      //history.push('/home')
       return <div>{user.username}, you are logged in!</div>
     }
     
