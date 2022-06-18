@@ -31,6 +31,8 @@ const FormInput = (setToken) => {
     history.push('/signin');
     setToken(token);
   }
+
+
   return (
     <h4 className="loginBox">
       <form onSubmit={handleSubmit}>

@@ -1,4 +1,4 @@
-import axios from "axios";
+import API from "../screens/API";
 import React, { useState } from "react";
 
 const SearchForm = () => {
@@ -8,12 +8,15 @@ const SearchForm = () => {
   const [record, setRecord] = useState([]);
   
 
-  const searchRecords = () => {
-    axios
-      .get(`https://supper-makan-apa.herokuapp.com/public/location/${search}/${search1}/${search2}`)
+  const searchRecords = async () => {
+    await API
+      .get(`/public/location/${search}/${search1}/${search2}`)
       .then((res) => {
         setRecord(res.data);
 
+      })
+      .catch(error => {
+        console.log('Error getting fake data: ' + error);
       });
   }
 
@@ -30,15 +33,19 @@ const SearchForm = () => {
     setSearch2(e.target.value);
   }
 
+  const handleSubmit = (e)  => {
+    e.preventDefault();
+  }
+
   return (
     <section>
       <div className="container">
         <h4 className="mb-3 text-center mt-4">Search Restaruant location</h4>
         <div className="row mt-3">
-          <form>
+          <form onSubmit={handleSubmit}>
             <h3>Location</h3>
             <select
-                onClick={searchRecords}
+                //onClick={searchRecords}
                 onChange={handleChange}> 
               <option value="N/A">Please choose</option>
               <option value="North">North</option>
@@ -47,12 +54,10 @@ const SearchForm = () => {
               <option value="West">West</option>
               <option value="Central">Central</option>
             </select>
-          </form>
 
-          <form>
             <h3>Cuisine offered</h3>
             <select
-                onClick={searchRecords}
+                //onClick={searchRecords}
                 onChange={handleChange1}> 
               <option value="N/A">Please choose</option>
               <option value="Western">Western</option>
@@ -63,12 +68,10 @@ const SearchForm = () => {
               <option value="Japanese">Japanese</option>
               <option value="Korean">Korean</option>
             </select>
-          </form>
 
-          <form>
             <h3>Price range</h3>
             <select
-                onClick={searchRecords}
+                //onClick={searchRecords}
                 onChange={handleChange2}> 
               <option value="N/A">Please choose</option>
               <option value="$">$</option>
@@ -77,6 +80,10 @@ const SearchForm = () => {
               <option value="$$$$">$$$$</option>
               <option value="$$$$$">$$$$$</option>
             </select>
+
+            <button onClick={searchRecords}>
+          Generate
+        </button>
           </form>
         <table className="table table-hover  table-striped table-bordered ml-4 ">
             <thead>

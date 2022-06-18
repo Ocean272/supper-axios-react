@@ -24,11 +24,13 @@ const LoginForm = () => {
   const handleSubmit =  async (e) => {
     e.preventDefault();
     const user = {username,password};
+
     //send the username and password to the server
-    const resp = await API.post
-      ("/login/signin", user);
+    const resp = await API.post("/login/signin", user);
+
     //set the state of the user
     setUser(resp.data)
+    
     //store the user in localStorage
     localStorage.setItem('user', resp.data)
     console.log(resp.data)
