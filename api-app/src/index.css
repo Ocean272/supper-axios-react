@@ -56,3 +56,29 @@ form > input{
   padding:5px;
   margin:10px;
 }
+table,
+tr {
+  background-color: rgba(255, 166, 0, 0.598);
+  margin: 0px 20px;
+  width: 98%;
+  padding-bottom: 1em;
+}
+
+tr {
+  background-color: beige;
+  width: fit-content;
+  text-align: center;
+}
+
+td {
+  height: 25px;
+  vertical-align: center;
+}
+
+label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}

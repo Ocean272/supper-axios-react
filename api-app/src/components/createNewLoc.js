@@ -2,24 +2,26 @@ import { useState } from 'react'
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
  
-const newLocation = () => {
+const NewLocation = () => {
     const [locationId, setLocationId] = useState("");
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [located_at, setLocated_at] = useState('');
     const [cuisineId, setCuisineId] = useState('');
     const [priceId, setPriceId] = useState('');
+    const [openingHour, setOpeninghour] = useState('');
     const history = useHistory();
  
     const saveLocation = async (e) => {
         e.preventDefault();
-        await axios.post('https://supper-makan-apa.herokuapp.com/user/newlocation',{
+        await axios.post('http://localhost:5000/user/newlocation',{
             locationId,
             name,
             address,
             located_at,
             cuisineId,
-            priceId
+            priceId,
+            openingHour
         });
         history.push("/");
     }
@@ -92,6 +94,17 @@ const newLocation = () => {
                         onChange={ (e) => setPriceId(e.target.value) }
                     />
                 </div>
+
+                <div className="field">
+                    <label className="label">Opening Hour</label>
+                    <input 
+                        className="input"
+                        type="text"
+                        placeholder="Name"
+                        value={ openingHour }
+                        onChange={ (e) => setOpeninghour(e.target.value) }
+                    />
+                </div>
  
                 <div className="field">
                     <button className="button is-primary">Save</button>
@@ -101,4 +114,4 @@ const newLocation = () => {
     )
 }
  
-export default newLocation
+export default NewLocation

@@ -19,6 +19,7 @@ const LoginForm = () => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [user, setUser] = useState();
+  const [removeuser, setRemoveuser] = useState();
 
 
   const handleSubmit =  async (e) => {
@@ -38,8 +39,16 @@ const LoginForm = () => {
     // if there's a user show the message below
     if (user) {
       //history.push('/home')
-      return <div>{user.username}, you are logged in!</div>
+      //return <div>{user.username}, you are logged in!</div>
     }
+
+  const handleLogout = async (e) => {
+    e.preventDefault()
+
+    const res = await API.post("/user/signout", removeuser);
+    setRemoveuser(res.data)
+    console.log(res.data)
+  }
     
 
   //if there's no user, show the login form
@@ -60,6 +69,7 @@ const LoginForm = () => {
           onChange={e => setPassword(e.target.value)}
         />
         <button type="submit" onClick={handleSubmit} >Submit</button>
+        <button type="submit" onClick={handleLogout} >Logout</button>
       </form>
     </h4>
   );

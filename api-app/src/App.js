@@ -11,6 +11,7 @@ import NewLocation from "./components/createNewLoc";
 import ReviewForm from "./components/ReviewForm";
 import SearchForm from "./components/SearchForm";
 import LoginForm from "./components/signin";
+import SearchOneForm from "./components/Search1";
 
 /*
   App.js responsibilities:
@@ -54,6 +55,11 @@ function App() {
               SearchForm
             </NavLink>
           </div>
+          <div>
+            <NavLink to="/SearchOneForm" activeClassName="current">
+              SearchOneForm
+            </NavLink>
+          </div>
         </div>
         <div className="tab-container">
           {/* A <Switch> looks through its children <Route>s and
@@ -73,6 +79,9 @@ function App() {
             </Route>
             <Route path="/SearchForm">
               <SearchForm/>
+            </Route>
+            <Route path="/SearchOneForm">
+              <SearchOneForm/>
             </Route>
             <Route path="/home">
               <Home />
