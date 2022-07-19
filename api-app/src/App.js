@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,6 +13,9 @@ import ReviewForm from "./components/ReviewForm";
 import SearchForm from "./components/SearchForm";
 import LoginForm from "./components/signin";
 import SearchOneForm from "./components/Search1";
+import { UserContext } from "./components/UserContext";
+import API from '../src/screens/API';
+
 
 /*
   App.js responsibilities:
@@ -19,6 +23,27 @@ import SearchOneForm from "./components/Search1";
   2. Routing defined
 */
 function App() {
+  const [user, setUser] = useState(null)
+
+  const providerValue = useMemo(()=> ({user, setUser}), [user, setUser])
+
+  // const [userData, setUserData] = useState([]);
+
+  // useEffect(() => {
+  //   getUserAll();
+  // }, []);
+
+  // const getUserAll = async () => {
+  //   const res = await API.get(
+  //     "/login/user"
+  //   );
+  //   if (res.status === 200) {
+  //     //console.log(res);
+  //     setUserData(res.data);
+  //     };
+  //   }
+
+  //   console.log(userData)
 
   return (
     <div className="App-header">
@@ -64,6 +89,7 @@ function App() {
         <div className="tab-container">
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
+          <UserContext.Provider value={providerValue}>
           <Switch>
             <Route path="/Signup">
               <FormInput />
@@ -90,6 +116,7 @@ function App() {
               <Home />
             </Route>
           </Switch>
+          </UserContext.Provider>
         </div>
       </Router>
     </div>

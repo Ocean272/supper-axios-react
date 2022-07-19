@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 //import { useHistory } from "react-router-dom";
 import API from "../screens/API";
+import { UserContext } from "./UserContext";
 
 
 // async function loginUser(credentials) {
@@ -16,11 +17,12 @@ import API from "../screens/API";
   
 const LoginForm = () => {
   //const history = useHistory();
+
+  //const {value} = useContext(UserContext)
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  const [user, setUser] = useState();
-  const [removeuser, setRemoveuser] = useState();
-
+  const {user, setUser} = useContext(UserContext);
+  
 
   const handleSubmit =  async (e) => {
     e.preventDefault();
@@ -45,8 +47,8 @@ const LoginForm = () => {
   const handleLogout = async (e) => {
     e.preventDefault()
 
-    const res = await API.post("/user/signout", removeuser);
-    setRemoveuser(res.data)
+    const res = await API.post("/user/signout");
+    setUser(res.data)
     console.log(res.data)
   }
     
@@ -55,7 +57,7 @@ const LoginForm = () => {
   return (
     <h4 className="loginBox">
       <form onSubmit={handleSubmit}>
-        <p>Login</p>
+        <p>Login</p><pre>{JSON.stringify(user, null, 2)}</pre>
         <input
           type="text"
           name="username"
