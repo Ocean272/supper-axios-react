@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import API from "../screens/API";
-import { login } from "../utlis/login";
+//import { login } from "../utlis/login";
 import { UserContext } from "./UserContext";
 
 const Overview= () => {
@@ -36,6 +36,7 @@ const Overview= () => {
             <p>located_at: {l.located_at}</p>
             <p>cuisine: {l.cuisineId}</p>
             <p>Price range: {l.priceId}</p>
+            <p><img src={l.image} alt=""/></p>
           </div>
         );
       })}
