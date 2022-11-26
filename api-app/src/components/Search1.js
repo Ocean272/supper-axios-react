@@ -4,6 +4,7 @@ import React, { useState } from "react";
 const SearchOneForm = () => {
 
   const [record, setRecord] = useState([]);
+  //const [reviews, setReviews] = useState([]);
   const [name, setName] = useState("");
   
   const searchRecords = async () => {
@@ -17,9 +18,20 @@ const SearchOneForm = () => {
   }
 
   const handleChange = (e) => {
-    console.log(e.target.value);
-    setName(e.target.value);
+    record.filter((p => p.name.toUpperCase().includes(name)))
+        setName(e.target.value.toUpperCase());
   }
+
+  
+  // const getReviewsAll = async () => {
+  //   const res = await API.get(
+  //     `/public/review/${id}`
+  //   );
+  //   if (res.status === 200) {
+  //     console.log(res);
+  //     setReviews(res.data);
+  //     };
+  //   }
 
 
   return (
@@ -55,6 +67,7 @@ const SearchOneForm = () => {
                 <th>located_at</th>
                 <th>cuisineId</th>
                 <th>priceId</th>
+                <th>review</th>
                 <th>openingHour</th>
                 <th>image</th>
               </tr>
@@ -68,6 +81,7 @@ const SearchOneForm = () => {
                       <td>{a.located_at}</td>
                       <td>{a.cuisineId}</td>
                       <td>{a.priceId}</td>
+                      <td>{a.review}</td>
                       <td>{a.openingHour}</td>
                       <td>{a.image}</td>
                       <br />

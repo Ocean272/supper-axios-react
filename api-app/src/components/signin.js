@@ -32,7 +32,7 @@ const LoginForm = () => {
     const resp = await API.post("/login/signin", user);
 
     //set the state of the user
-    setUser(resp.data)
+    setUser(resp.data.id)
     
     //store the user in localStorage
     localStorage.setItem('user', resp.data)
@@ -48,11 +48,10 @@ const LoginForm = () => {
     e.preventDefault()
 
     const res = await API.post("/user/signout");
-    setUser(res.data)
+    setUser(res.data.id)
     console.log(res.data)
   }
     
-
   //if there's no user, show the login form
   return (
     <h4 className="loginBox">

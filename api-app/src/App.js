@@ -14,7 +14,6 @@ import SearchForm from "./components/SearchForm";
 import LoginForm from "./components/signin";
 import SearchOneForm from "./components/Search1";
 import { UserContext } from "./components/UserContext";
-import API from '../src/screens/API';
 
 
 /*
@@ -26,24 +25,6 @@ function App() {
   const [user, setUser] = useState(null)
 
   const providerValue = useMemo(()=> ({user, setUser}), [user, setUser])
-
-  // const [userData, setUserData] = useState([]);
-
-  // useEffect(() => {
-  //   getUserAll();
-  // }, []);
-
-  // const getUserAll = async () => {
-  //   const res = await API.get(
-  //     "/login/user"
-  //   );
-  //   if (res.status === 200) {
-  //     //console.log(res);
-  //     setUserData(res.data);
-  //     };
-  //   }
-
-  //   console.log(userData)
 
   return (
     <div className="App-header">
