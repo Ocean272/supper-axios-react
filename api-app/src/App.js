@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,6 +14,10 @@ import SearchForm from "./components/SearchForm";
 import LoginForm from "./components/signin";
 import SearchOneForm from "./components/Search1";
 import { UserContext } from "./components/UserContext";
+<<<<<<< HEAD
+=======
+//import API from '../src/screens/API';
+>>>>>>> 885da516cc22356a49cefec75edc6865bd4eb141
 
 
 /*

@@ -28,6 +28,7 @@ const Overview= () => {
   return (
   <>
     <div className="Child-wrapper">
+<<<<<<< HEAD
     <pre>{JSON.stringify(user, null, 2)}</pre>
       <h2>RESTAURANTS</h2>
         {locData.map((l) => {
@@ -50,6 +51,22 @@ const Overview= () => {
           );
         })}
       
+=======
+    <h2>RESTAURANTS</h2>  
+      {locData.map((l) => {
+        return (
+          <div className="Child-box" key={l.id}>
+            <pre>{JSON.stringify(user, null, 2)}</pre>
+            <p>name : {l.name}</p>
+            <p>address: {l.address}</p>
+            <p>located_at: {l.located_at}</p>
+            <p>cuisine: {l.cuisineId}</p>
+            <p>Price range: {l.priceId}</p>
+            <p><img src={l.image} alt=""/></p>
+          </div>
+        );
+      })}
+>>>>>>> 885da516cc22356a49cefec75edc6865bd4eb141
     </div>
     </>
   );
