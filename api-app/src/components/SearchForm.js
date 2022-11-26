@@ -74,9 +74,9 @@ const SearchForm = () => {
                 //onClick={searchRecords}
                 onChange={handleChange2}> 
               <option value="N/A">Please choose</option>
-              <option value="cheap">$</option>
-              <option value="moderate">$$</option>
-              <option value="expensive">$$$</option>
+              <option value="cheap">cheap</option>
+              <option value="moderate">moderate</option>
+              <option value="expensive">expensive</option>
             </select>
 
             <button onClick={searchRecords}>
